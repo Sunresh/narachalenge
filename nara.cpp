@@ -1,7 +1,8 @@
 ﻿#include <opencv2/opencv.hpp>
 #include <windows.h>
 #include <CommCtrl.h>
-#include "nara.h"  // Make sure nara.h is in the correct location
+#include "nara.h"
+#include "element.cpp"
 
 HINSTANCE hInst;
 cv::VideoCapture cap;  // Declare VideoCapture outside to keep the capture open
@@ -65,15 +66,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 	case WM_CREATE:
 	{
-		// Create "Start Camera" button
-		CreateWindowW(L"BUTTON", L"Start Camera", WS_CHILD | WS_VISIBLE, 10, 380, 100, 30, hwnd, (HMENU)1, hInst, nullptr);
-
-		// Create "Stop Camera" button
-		CreateWindowW(L"BUTTON", L"Stop Camera", WS_CHILD | WS_VISIBLE, 120, 380, 100, 30, hwnd, (HMENU)2, hInst, nullptr);
-
-		// Create video frame window
+		Element maya(hwnd, uMsg, wParam, lParam);
 		hVideoWindow = CreateWindowW(L"STATIC", nullptr, WS_CHILD | WS_VISIBLE | SS_BITMAP, 10, 10, 480, 360, hwnd, nullptr, hInst, nullptr);
-
 		SetTimer(hwnd, 1, 30, NULL);  // Set a timer to update video every 30 milliseconds
 	}
 	break;
