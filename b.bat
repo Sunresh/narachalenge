@@ -1,5 +1,8 @@
 
 @echo off
+
+clear
+
 :: 1. Wipe the old build folder
 if exist build rd /s /q build
 
