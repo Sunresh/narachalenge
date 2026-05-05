@@ -1,8 +1,16 @@
-﻿// nara.h : Include file for standard system include files,
-// or project specific include files.
+﻿#include <wx/wx.h>
+#include <opencv2/opencv.hpp>
 
-#pragma once
+// 1. Define the Application Class
+class NaraApp : public wxApp {
+public:
+    virtual bool OnInit();
+};
 
-#include <iostream>
-
-// TODO: Reference additional headers your program requires here.
+// 2. Define the Main Window (Frame)
+class MainFrame : public wxFrame {
+public:
+    MainFrame(const wxString& title);
+private:
+    void OnQuit(wxCommandEvent& event);
+};
