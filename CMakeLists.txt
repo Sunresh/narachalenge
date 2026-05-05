@@ -1,6 +1,13 @@
 ﻿cmake_minimum_required (VERSION 3.10)
 project("nara")
-add_executable (nara WIN32 "nara.cpp" )
+set(SOURCES
+    main.cpp
+    MainFrame.cpp
+    ComparePanel.cpp
+    CompressPanel.cpp
+)
+add_executable (nara WIN32 ${SOURCES})
+
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET nara PROPERTY CXX_STANDARD 20)
 endif()
