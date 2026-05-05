@@ -36,28 +36,28 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     $<TARGET_FILE_DIR:${PROJECT_NAME}>
 )
 
-include(GNUInstallDirs)
+# include(GNUInstallDirs)
 
-# Install the main executable
-install(TARGETS ${PROJECT_NAME}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
-install(FILES "${OpenCV_DIR}/../bin/opencv_world4120.dll"
-    DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+# # Install the main executable
+# install(TARGETS ${PROJECT_NAME}
+#     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+# )
+# install(FILES "${OpenCV_DIR}/../bin/opencv_world4120.dll"
+#     DESTINATION ${CMAKE_INSTALL_BINDIR}
+# )
 
-set(CPACK_PACKAGE_NAME "NaraChallenge")
-set(CPACK_PACKAGE_VENDOR "YourName")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Nara Project with OpenCV")
-set(CPACK_PACKAGE_VERSION "1.0.0")
+# set(CPACK_PACKAGE_NAME "NaraChallenge")
+# set(CPACK_PACKAGE_VENDOR "YourName")
+# set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Nara Project with OpenCV")
+# set(CPACK_PACKAGE_VERSION "1.0.0")
 
-# Important: Some versions of CPack specifically look for this
-set(CPACK_NSIS_PACKAGE_NAME "NaraChallenge") 
+# # Important: Some versions of CPack specifically look for this
+# set(CPACK_NSIS_PACKAGE_NAME "NaraChallenge") 
 
-# Create a shortcut in the Start Menu
-set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\Nara.lnk' '$INSTDIR\\\\bin\\\\nara.exe'")
+# # Create a shortcut in the Start Menu
+# set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\Nara.lnk' '$INSTDIR\\\\bin\\\\nara.exe'")
 
-set(CPACK_GENERATOR "NSIS")
+# set(CPACK_GENERATOR "NSIS")
 
-# THIS MUST BE THE LAST LINE
-include(CPack)
+# # THIS MUST BE THE LAST LINE
+# include(CPack)

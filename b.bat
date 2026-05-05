@@ -11,9 +11,9 @@ cmake -B build -S .
 
 :: 3. Compile the code
 cmake --build build --config Release
-cd build
-cpack -G NSIS -C Release
-cd ..
+@REM cd build
+@REM cpack -G NSIS -C Release
+@REM cd ..
 :: 4. Launch the application
 if %ERRORLEVEL% EQU 0 (
     echo Launching nara.exe...
