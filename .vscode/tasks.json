@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Full Build and Package (Batch)",
+            "type": "shell",
+            "command": ".\\b.bat",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$msCompile",
+            "detail": "Runs the full wipe, build, and CPack process."
+        },
+        {
+            "label": "CMake: Clean Build",
+            "type": "shell",
+            "command": "cmake --build build --target clean",
+            "problemMatcher": []
+        }
+    ]
+}

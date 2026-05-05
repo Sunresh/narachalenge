@@ -1,25 +1,10 @@
-﻿# CMakeList.txt : CMake project for nara, include source and define
-# project specific logic here.
-#
-cmake_minimum_required (VERSION 3.10)
-# Enable Hot Reload for MSVC compilers if supported.
-if (POLICY CMP0141)
-  cmake_policy(SET CMP0141 NEW)
-  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
-endif()
-
-project ("nara")
-# Add source to this project's executable.
+﻿cmake_minimum_required (VERSION 3.10)
+project("nara")
 add_executable (nara WIN32 "nara.cpp" "nara.h" "element.cpp")
-
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET nara PROPERTY CXX_STANDARD 20)
 endif()
 set(OpenCV_DIR "C:/OpenCV/opencv/build/x64/vc16/lib")
-
-
-
-
 
 cmake_policy(SET CMP0074 NEW)
 # Use wxWidgets_ROOT (no _DIR) for the standard Find module
@@ -35,13 +20,8 @@ include_directories("C:/wxWidgets332/include")
 # Add the include directories
 target_include_directories(${PROJECT_NAME} PRIVATE ${wxWidgets_INCLUDE_DIRS})
 
-
-
 target_include_directories(${PROJECT_NAME} PRIVATE ${wxWidgets_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES} ${OpenCV_LIBS})
-
-
-
 
 find_package(OpenCV REQUIRED)
 include_directories("C:/OpenCV/opencv/build/include")
@@ -55,12 +35,7 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     "${OpenCV_DIR}/../bin/opencv_world4120.dll"
     $<TARGET_FILE_DIR:${PROJECT_NAME}>
 )
-# add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-#     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-#     "${wxWidgets_LIB_DIR}/wxbase30u_vc_custom.dll" # Note: Filenames change based on version (305 = 30)
-#     "${wxWidgets_LIB_DIR}/wxmsw30u_core_vc_custom.dll"
-#     $<TARGET_FILE_DIR:${PROJECT_NAME}>
-# )
+
 include(GNUInstallDirs)
 
 # Install the main executable
